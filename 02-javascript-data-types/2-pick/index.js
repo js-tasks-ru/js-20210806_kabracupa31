@@ -7,7 +7,7 @@
 export const pick = (obj, ...fields) => {
   return Object.fromEntries(
     fields
-      .filter(key => key in obj)
+      .filter(key => obj.hasOwnProperty(key))
       .map(key => [key, obj[key]])
   );
 }
