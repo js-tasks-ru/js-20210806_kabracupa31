@@ -5,5 +5,10 @@
  * @returns {object} - returns the new object
  */
 export const pick = (obj, ...fields) => {
+  return Object.fromEntries(
+    fields
+      .filter(key => obj.hasOwnProperty(key))
+      .map(key => [key, obj[key]])
+  );
+}
 
-};
