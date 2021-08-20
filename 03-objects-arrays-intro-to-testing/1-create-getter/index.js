@@ -8,9 +8,7 @@ export function createGetter(path) {
   return function findProp(obj, ind = 0) {
     if (obj === undefined) {return;}
     if (ind === props.length - 1) {return (obj[props[ind]]);}
-    else {
-      return findProp(obj[props[ind]], ++ind);
-    }
+    return findProp(obj[props[ind]], ++ind);
   };
   //return findProp(obj);
 }
