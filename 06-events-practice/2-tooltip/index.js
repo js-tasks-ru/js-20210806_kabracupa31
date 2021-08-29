@@ -3,19 +3,20 @@ class Tooltip {
   onPointerOut = event => {
     if (!event.target.dataset.tooltip) return;
 
-    event.target.removeEventListener('mousemove', this.onMouseMove);
+    event.target.removeEventListener('mousemove', this.onPointerMove);
     this.element.remove();
   }
-  onMouseMove = event => {
-    this.element.style.left = event.pageX + 'px';
-    this.element.style.top = event.pageY + 'px';
+  onPointerMove = event => {
+    const offset = 10;
+    this.element.style.left = offset + event.pageX + 'px';
+    this.element.style.top = offset + event.pageY + 'px';
   }
   onPointerOver = event => {
     if (!event.target.dataset.tooltip) return;
 
     this.text = event.target.dataset.tooltip;
     this.render(event.target);
-    event.target.addEventListener('mousemove', this.onMouseMove);
+    event.target.addEventListener('pointermove', this.onPointerMove);
   }
 
   constructor() {
