@@ -1,12 +1,11 @@
 export default class NotificationMessage {
+  static displayedNotification = null;
   constructor(simpleText = '', {duration = 1000, type = 'success'} = {}) {
     this.simpleText = simpleText;
     this.duration = duration;
     this.type = type;
     this.render();
   }
-  static displayedNotification = null;
-
   get template() {
     return `
             <div class="notification ${this.type}" style="--value:${Math.round(this.duration / 1000)}s">
@@ -41,6 +40,5 @@ export default class NotificationMessage {
   destroy() {
     clearTimeout(this.timeOut);
     this.remove();
-    NotificationMessage.displayedNotification = null;
   }
 }
