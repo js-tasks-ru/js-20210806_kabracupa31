@@ -3,7 +3,7 @@ class Tooltip {
   onPointerOut = event => {
     if (!event.target.dataset.tooltip) return;
 
-    event.target.removeEventListener('mousemove', this.onPointerMove);
+    event.target.removeEventListener('pointermove', this.onPointerMove);
     this.element.remove();
   }
   onPointerMove = event => {
